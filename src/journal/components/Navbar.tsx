@@ -1,12 +1,22 @@
 import { FC } from 'react';
 import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material';
 import { LogoutOutlined, MenuOutlined } from '@mui/icons-material';
+import { useAppDispatch } from '../../store/hooks';
+import { authLogout } from '../../features/auth';
 
 interface Props {
     drawerWidth: number;
 }
 
 export const Navbar: FC<Props> = ({ drawerWidth }) => {
+
+    const dispatch = useAppDispatch();
+
+    const onLogout = () => {
+        console.log('onLogout');
+        dispatch( authLogout() );
+    }
+
     return (
         <AppBar
             position="fixed"
@@ -30,7 +40,10 @@ export const Navbar: FC<Props> = ({ drawerWidth }) => {
                     alignItems="center"
                 >
                     <Typography variant="h6" noWrap component="div">Journal App</Typography>
-                    <IconButton color="error">
+                    <IconButton
+                        color="error"
+                        onClick={onLogout}
+                    >
                         <LogoutOutlined />
                     </IconButton>
                 </Grid>

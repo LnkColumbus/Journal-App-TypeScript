@@ -8,8 +8,8 @@ export const JournalPage = () => {
   return (
     <JournalLayout>
       {/* <Typography>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt officiis tenetur ipsa iusto beatae voluptas id harum soluta qui? Nobis aliquid similique et quam velit reiciendis dolore magnam voluptatum obcaecati.</Typography> */}
-      {/* <NothingSelectedView /> */}
-      <NoteView />
+      <NothingSelectedView />
+      {/* <NoteView /> */}
 
       <IconButton
         size="large"

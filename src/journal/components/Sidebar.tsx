@@ -1,12 +1,16 @@
 import { FC } from 'react';
 import { Box, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material';
 import { TurnedInNot } from '@mui/icons-material';
+import { useAppSelector } from '../../store/hooks';
 
 interface Props {
     drawerWidth: number;
 }
 
 export const Sidebar: FC<Props> = ({ drawerWidth }) => {
+
+    const { displayName } = useAppSelector((state) => state.auth);
+
     return (
         <Box
             component="nav"
@@ -23,7 +27,7 @@ export const Sidebar: FC<Props> = ({ drawerWidth }) => {
 
                 <Toolbar>
                     <Typography variant="h6" noWrap component="div">
-                        Marlon Veliz
+                        { displayName }
                     </Typography>
                 </Toolbar>
                 <Divider />
