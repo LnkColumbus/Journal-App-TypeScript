@@ -5,6 +5,7 @@ import { FirebaseAuth } from '../firebase/config';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 
 import { setUser, unSetUser } from '../features/auth';
+import { getNotes } from '../features/journal';
 
 export const useCheckAuth = () => {
     const { status } = useAppSelector((state) => state.auth);
@@ -16,6 +17,7 @@ export const useCheckAuth = () => {
 
             const { displayName, email, photoURL, uid } = user;
             dispatch( setUser({ displayName, email, photoURL, uid }) );
+            dispatch( getNotes() );
         })
     }, [])
   

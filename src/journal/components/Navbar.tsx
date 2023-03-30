@@ -1,8 +1,11 @@
 import { FC } from 'react';
 import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material';
 import { LogoutOutlined, MenuOutlined } from '@mui/icons-material';
+
 import { useAppDispatch } from '../../store/hooks';
+
 import { authLogout } from '../../features/auth';
+import { clearNotesLogout } from '../../features/journal';
 
 interface Props {
     drawerWidth: number;
@@ -13,7 +16,7 @@ export const Navbar: FC<Props> = ({ drawerWidth }) => {
     const dispatch = useAppDispatch();
 
     const onLogout = () => {
-        console.log('onLogout');
+        dispatch( clearNotesLogout() );
         dispatch( authLogout() );
     }
 

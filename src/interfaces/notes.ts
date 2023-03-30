@@ -4,5 +4,5 @@ export interface INote {
     title: string;
     body: string;
     date: number;
-    imagesUrls: string[];
+    imageUrls: string[];
 }

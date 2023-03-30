@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { Box, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material';
-import { TurnedInNot } from '@mui/icons-material';
-import { useAppSelector } from '../../store/hooks';
+import { Box, Divider, Drawer, List, Toolbar, Typography } from '@mui/material';
 
+import { useAppSelector } from '../../store/hooks';
+import { NoteItem } from './';
 interface Props {
     drawerWidth: number;
 }
@@ -10,6 +10,7 @@ interface Props {
 export const Sidebar: FC<Props> = ({ drawerWidth }) => {
 
     const { displayName } = useAppSelector((state) => state.auth);
+    const { notes } = useAppSelector((state) => state.journal);
 
     return (
         <Box
@@ -33,18 +34,8 @@ export const Sidebar: FC<Props> = ({ drawerWidth }) => {
                 <Divider />
 
                 <List>
-                    { ['Enero', 'Febrero', 'Marzo', 'Abril'].map( text => (
-                        <ListItem key={ text } disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <TurnedInNot />
-                                </ListItemIcon>
-                                <Grid container>
-                                    <ListItemText primary={ text } />
-                                    <ListItemText secondary={'In nisi consequat ea nostrud irure ullamco esse commodo fugiat magna consequat nulla est tempor.'} />
-                                </Grid>
-                            </ListItemButton>
-                        </ListItem>
+                    { notes.map( note => (
+                        <NoteItem key={note.id} note={note} />
                     ))}
                 </List>
             </Drawer>
